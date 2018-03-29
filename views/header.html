@@ -1,0 +1,28 @@
+<ul class="layui-nav">
+    <!--logo-->
+    <li class="fl logo"><a href="/html/index"><span>xxxblog</span></a></li>
+    <!--菜单-->
+    <% for(var key in list){ %>
+        <% var item=list[key]; %>
+        <li class="layui-nav-item <%= item.current?'layui-this':'' %>">
+            <a href="<%= item.path %>"><%= item.name %></a>
+        </li>
+    <% } %>
+    <!--用户相关信息-->
+    <% if(user.id && user.name){ %>
+        <li class="fr layui-nav-item">
+            <a href="javascript:void 0;">欢迎您!<%= user.name %></a>
+            <dl class="layui-nav-child">
+                <dd><a href="/html/myblog">我的blog</a></dd>
+                <dd><a href="javascript:void 0;"><span id="logout" class="btn" @click="logout">退出</span></a></dd>
+            </dl>
+        </li>
+    <% }else{ %>
+        <li class="fr">
+            <a href="javascript:void 0;">
+                <span id="login" class="btn" @click="show_login">登录</span>
+                <span id="register" class="btn">注册</span>
+            </a>
+        </li>
+    <% } %>
+</ul>

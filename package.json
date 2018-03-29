@@ -1,0 +1,31 @@
+{
+  "name": "authority_management",
+  "version": "1.0.0",
+  "description": "权限管理测试",
+  "main": "index.js",
+  "scripts": {
+    "start":"node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.16.x",
+    "body-parser": "^1.18.x",
+    "mysql": "^2.15.x",
+    "cookie-parser": "^1.4.x",
+    "express-session": "^1.15.x",
+    "ejs": "2.5.x"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.x",
+    "gulp": "3.9.1",
+    "gulp-sass": "3.1.0",
+    "gulp-uglify": "3.0.0",
+    "gulp-jshint": "2.1.0",
+    "pump": "3.0.0",
+    "gulp-babel": "7.0.1",
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1"
+  },
+  "author": "liduowei",
+  "license": "MIT LICENSE"
+}

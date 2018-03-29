@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户权限管理</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <style>
+        .layui-input-block{
+            margin: 0;
+            padding: 20px 20px 0;
+        }
+        .layui-form-checkbox{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="page">
+    <div id="header" class="text-c clearfix">
+        <% include ../header.html %>
+    </div>
+    <div id="content" class="clearfix">
+        <div id="container">
+            <div id="role-list">
+                <table id="table" class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>操作权限</th>
+                            <th>菜单权限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr is="my-role" :item="item" v-for="item in list_role" @authority="authority"></tr>
+                    </tbody>
+                </table>
+                <form id="form-list" class="layui-form layui-hidden" v-show="panel" lay-filter="form-list">
+                    <div class="layui-item">
+                        <div class="layui-input-block">
+                            <div is="form-list" v-for="item of list_ctr" :handle="item"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="text-c clearfix">
+        <% include ../footer.html %>
+    </div>
+</div>
+<script src="/lib/js/vue.js"></script>
+<script src="/lib/js/axios.js"></script>
+<script src="/layui/layui.js"></script>
+<script src="/js/base.js"></script>
+<script src="/js/authority.js"></script>
+</body>
+</html>

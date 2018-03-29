@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/build/index.css">
+</head>
+<body>
+<div id="page">
+    <div id="header" class="text-c clearfix">
+        <% include ../header.html %>
+    </div>
+    <div id="content" class="clearfix">
+        <div id="container">
+            <div class="layui-carousel" id="banner" lay-filter="banner">
+                <div carousel-item="2">
+                    <div>条目1</div>
+                    <div>条目2</div>
+                    <div>条目3</div>
+                    <div>条目4</div>
+                    <div>条目5</div>
+                </div>
+            </div>
+            <div id="article-list">
+                <ol id="search-card" class="clearfix">
+                    <search-card v-for="(item,index) of searchCard" :key="item.id"
+                    @toggle="toggle_search_type(index)" :item="item"></search-card>
+                </ol>
+                <ol>
+                    <my-article v-for="(item,index) of list" :key="item.id" :article="item"></my-article>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="text-c clearfix">
+        <% include ../footer.html %>
+    </div>
+</div>
+<script defer src="/lib/js/vue.js"></script>
+<script defer src="/lib/js/axios.js"></script>
+<script defer src="/layui/layui.js"></script>
+<script defer src="/js/base.js"></script>
+<script defer src="/js/index.js"></script>
+</body>
+</html>
