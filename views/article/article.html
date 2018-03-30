@@ -5,6 +5,7 @@
     <title>帖子管理</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
     <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/build/article.css">
 </head>
 <body>
 <div id="page">
@@ -15,7 +16,7 @@
         <div id="container">
             <div id="article-list">
                 <ol>
-                    <my-article v-for="(item,index) of list" :article="item" :key="item.id" @remove="remove(item,index);"></my-article>
+                    <li is="my-article" v-for="(item,index) of list" :article="item" :key="item.id" @remove="remove(item,index);"></li>
                 </ol>
             </div>
         </div>

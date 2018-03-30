@@ -1,0 +1,29 @@
+.layui-elem-field{
+  legend{
+    > img{
+      width:30px;
+      height:30px;
+    }
+  }
+  .layui-field-box h4{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+#search-card{
+  height: 40px;
+  line-height:40px;
+  background-color: rgba(126,126,126,.2);
+  margin: 15px 0;
+  padding-left: 15px;
+  li{
+    float: left;
+    margin-right: 15px;
+    cursor: pointer;
+    &.active{
+      color: #ff0000;
+    }
+  }
+}

@@ -16,7 +16,8 @@ exports.delete_article = (req,res)=>{
     let user_id = req.session.user.id || 0,
         article_id = req.body.article_id || 0;
     /*参数有误*/
-    if(!user_id || !article_id) return res.send(config.params_error);
+    if(!user_id || !article_id)
+        return res.send(config.params_error);
     let sql = 'update am_user_article set status=2,handled_by=? where id=?',
         pro = config.getPromise(sql,[user_id,article_id]);
     pro.then(
@@ -63,7 +64,8 @@ exports.set_freeze = (req,res)=>{
         handle_type = req.body.type || 0;
 
     /*参数有误*/
-    if(!handle_user_id || !user_id) return res.send(config.params_error);
+    if(!handle_user_id || !user_id)
+        return res.send(config.params_error);
 
     let sql = "update am_sys_user asu set asu.status=?,asu.handled_by=? where id=?";
     config.getPromise(sql,[handle_type,handle_user_id,user_id]).then(
@@ -115,5 +117,44 @@ exports.role_list = (req,res)=>{
 
 /*更改角色权限*/
 exports.update_role_authority = (req,res)=>{
+    let role = req.body.role,
+        handle = req.body.handle,
+        menu = req.body.menu;
 
+    //参数有误
+    if(!role && !handle && !menu)
+        return res.send(config.params_error);
+    let condition = [],
+        sql = `update am_user_authority aua set `;
+    //操作权限
+    if(handle) {
+        sql += `handle_authority=?`;
+        condition.push(handle);
+    }
+    //菜单权限
+    if(menu) {
+        sql += `menu_authority=?`;
+        condition.push(menu);
+    }
+    sql += ` where aua.id=(select role_authority from am_user_roles where id=?)`;
+    condition.push(role);
+    config.getPromise(sql,condition).then(
+        data=>{
+            if(data.affectedRows === 1){
+                res.send({
+                    errcode:0,
+                    errmsg:"更改权限成功!",
+                    data:[]
+                });
+            }else{
+                res.send({
+                    errcode:1,
+                    errmsg:"出现未知错误!",
+                    data:[]
+                });
+            }
+        }
+    ).catch(err=>{
+        config.pro_error("update_role_authority",err,res);
+    });
 };

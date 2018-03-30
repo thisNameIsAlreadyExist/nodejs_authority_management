@@ -15,9 +15,17 @@
     <div id="content" class="clearfix">
         <div id="container">
             <div id="user-list">
-                <ol>
-                    <my-user v-for="item of list" :user="item"></my-user>
-                </ol>
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr is="my-user" v-for="item of list" :user="item"></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

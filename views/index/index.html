@@ -25,11 +25,11 @@
             </div>
             <div id="article-list">
                 <ol id="search-card" class="clearfix">
-                    <search-card v-for="(item,index) of searchCard" :key="item.id"
-                    @toggle="toggle_search_type(index)" :item="item"></search-card>
+                    <li is="search-card" v-for="item of searchCard" :key="item.id"
+                    @toggle="toggle_search_type(item)" :item="item"></li>
                 </ol>
                 <ol>
-                    <my-article v-for="(item,index) of list" :key="item.id" :article="item"></my-article>
+                    <li is="my-article" v-for="(item,index) of list" :key="item.id" :article="item"></li>
                 </ol>
             </div>
         </div>

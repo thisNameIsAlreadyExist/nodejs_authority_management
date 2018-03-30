@@ -81,10 +81,18 @@ layui.use(['layer','myExtend'],()=>{
         components:{
             "my-article":{
                 props:["article"],
-                template:"<li>" +
-                "<h2>{{article.title}} <button class='layui-btn layui-btn-xs' @click='$emit(\"remove\")'>删除</button></h2></h2>"+
-                "<article>{{article.content}}</article>"+
-                "</li>"
+                template:"<fieldset class='layui-elem-field'>" +
+                    "<legend>" +
+                        "<img :src='article.avatar' alt=''>" +
+                        "<span>{{article.account}}</span>" +
+                        "<span style='margin-left: 15px'>收获点赞: {{article.heat}}</span>" +
+                    "</legend>"+
+                    "<div class='layui-field-box'>" +
+                        "<h4>{{article.title}}<button @click='$emit(\"remove\")' class='layui-btn layui-btn-sm'>删除</button></h4>"+
+                        "<p>{{article.content}}</p>"+
+                        "<p>{{article.create_time}}</p>"+
+                    "</div>"+
+                "</fieldset>"
             }
         }
     });

@@ -100,6 +100,7 @@ app.post("/system/admin/add_article",inter_admin.add_article);
 app.post("/system/admin/user_list",inter_admin.user_list);
 app.post("/system/admin/set_freeze",inter_admin.set_freeze);
 app.post("/system/admin/role_list",inter_admin.role_list);
+app.post("/system/admin/update_role_authority",inter_admin.update_role_authority);
 
 /*请求资源未找到*/
 app.get("*",(req,res)=>{

@@ -35,13 +35,6 @@
                         <tr is="my-role" :item="item" v-for="item in list_role" @authority="authority"></tr>
                     </tbody>
                 </table>
-                <form id="form-list" class="layui-form layui-hidden" v-show="panel" lay-filter="form-list">
-                    <div class="layui-item">
-                        <div class="layui-input-block">
-                            <div is="form-list" v-for="item of list_ctr" :handle="item"></div>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

@@ -40,12 +40,15 @@ layui.define(function(exports){
          * @param params {Object}:请求配置参数
          */
         http_post(params){
-            let _this = this;
+            let _this = this,
+                layer = params.layer;
             axios({
                 url:params.url,
                 method:"post",
                 data:params.data || {}
             }).then(res=>{
+                //如有加载弹窗,关闭
+                layer && layui.layer.close(layer);
                 //请求失败
                 if(res.data.errcode){
                     _this.normal_open(
@@ -58,6 +61,8 @@ layui.define(function(exports){
                     params.callback(res);
                 }
             }).catch(err=>{
+                //如有加载弹窗,关闭
+                layer && layui.layer.close(layer);
                 _this.normal_open(
                     "发生错误: "+err,
                     new Date().getTime().toString()

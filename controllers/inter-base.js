@@ -92,7 +92,8 @@ exports.article_list = (req,res)=>{
     let user = req.body.user || 0,
         user_id = req.session.user.id,
         condition = [];
-    let sql = ` select aua.id,aua.user_id,aua.article_title title,aua.article_content content,asu.avatar,asu.account
+    let sql = ` select aua.id,aua.user_id,aua.article_title title,aua.article_content content,
+                aua.supports heat,DATE_FORMAT(create_time,"%Y-%m-%d %H:%i:%S") create_time,asu.avatar,asu.account
                 from am_user_article aua left join am_sys_user asu on aua.user_id=asu.id where aua.status=1`;  //只获取状态正常的帖子
     if(user) {
         sql += " and user_id=?";
